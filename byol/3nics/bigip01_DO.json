@@ -1,0 +1,94 @@
+{
+    "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/schema/base.schema.json",
+    "schemaVersion": "1.3.0",
+    "class": "Device",
+    "async": true,
+    "label": "Declarative onboarding of a Standalone BIG-IP in a Cloud Environment",
+    "Common": {
+        "class": "Tenant",
+        "hostname": "bigip01.local",
+        "myLicense": {
+            "class": "License",
+            "licenseType": "regKey",
+            "regKey": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEEEE"
+        },
+        "myDns": {
+            "class": "DNS",
+            "nameServers": [
+                "8.8.8.8",
+                "8.8.4.4"
+            ],
+            "search": [
+                "acme.com"
+            ]
+        },
+        "myNtp": {
+            "class": "NTP",
+            "servers": [
+                "it.pool.ntp.org",
+                "0.pool.ntp.org",
+                "1.pool.ntp.org"
+            ],
+            "timezone": "Europe/Rome"
+        },
+        "f5admin": {
+            "class": "User",
+            "userType": "regular",
+            "password": "v6MkmqddvaRU5",
+            "shell": "bash",
+            "partitionAccess": {
+                "all-partitions": {
+                    "role": "admin"
+                }
+            }
+        },
+        "myProvisioning": {
+            "class": "Provision",
+            "ltm": "nominal"
+        },
+        "internal": {
+            "class": "VLAN",
+            "interfaces": [
+                {
+                    "name": "1.1",
+                    "tagged": false
+                }
+            ]
+        },
+        "external": {
+            "class": "VLAN",
+            "interfaces": [
+                {
+                    "name": "1.2",
+                    "tagged": false
+                }
+            ]
+        },
+        "internal-selfip": {
+            "class": "SelfIp",
+            "address": "10.6.20.10/22",
+            "vlan": "internal",
+            "allowService": "default",
+            "trafficGroup": "traffic-group-local-only"
+        },
+        "external-selfip": {
+            "class": "SelfIp",
+            "address": "10.6.10.10/24",
+            "vlan": "external",
+            "allowService": "default",
+            "trafficGroup": "traffic-group-local-only"
+        },
+        "default-gateway": {
+            "class": "Route",
+            "gw": "10.6.10.1",
+            "network": "default",
+            "mtu": 0
+        },
+        "dbvars": {
+        	"class": "DbVariables",
+        	"ui.advisory.enabled": true,
+        	"ui.advisory.color": "green",
+        	"ui.advisory.text": "/Common/hostname"
+        }
+    }
+}
