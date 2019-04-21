@@ -20,12 +20,6 @@ data "azurerm_subnet" "subnet2" {
   virtual_network_name = "${var.prefix}-vnet"
 }
 
-data "azurerm_subnet" "subnet3" {
-  name                 = "${var.prefix}-${var.subnet3_name}-subnet"
-  resource_group_name  = "${var.prefix}-rg"
-  virtual_network_name = "${var.prefix}-vnet"
-}
-
 ## ============================================================================
 ## ..:: BIG-IP Virtual Machine Creation ::..
 ## ============================================================================
