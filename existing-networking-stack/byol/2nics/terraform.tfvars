@@ -26,5 +26,5 @@ do_rpm_file                 = "f5-declarative-onboarding-1.4.1-1.noarch.rpm"
 as3_rpm_file                = "f5-appsvcs-3.11.0-3.noarch.rpm"
 f5_username                 = "f5admin"
 f5_password                 = "Default1234!"
-f5_new_password             = "v6MkmqddvaRU5"
+f5_new_password             = "abcdefghilnm"
 
