@@ -30,6 +30,7 @@ curl -o $AS3_RPM_FILE --silent --fail --retry 60 -L https://raw.githubuserconten
 
 
 # CLOUD LIBS FOR ONBOARDING
+mkdir -p /config/cloud/node_modules
 curl -o /config/cloud/f5-cloud-libs.tar.gz --silent --fail --retry 60 -L https://raw.githubusercontent.com/F5Networks/f5-cloud-libs/master/dist/f5-cloud-libs.tar.gz
 tar zxvf /config/cloud/f5-cloud-libs.tar.gz -C $LIBS_DIR
 
